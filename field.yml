@@ -1,0 +1,36 @@
+Source:
+    RA: 10h19m51.46s
+    Dec: +67d50m37.4s
+
+Field:
+    Centre: 10h20m02.69s 67d52m21s
+
+invis: concat_1020+6752.ms
+outvis: SelfCald.ms
+tmpvis: Shift.ms
+
+WSCLEAN:
+    version: wsclean-2.8
+    j: 2
+    field: 0
+    data-column: DATA
+    scale: 0.05arcsec
+    size: 512 512
+    gain: 0.2
+    mgain: 0.05
+    weight: natural
+    niter: 1000
+    auto-threshold: 1.0
+    fits-mask:
+    clean-border: 5
+    name: test
+
+
+gaincal:
+    cal_dir: calibration
+    callib: callib.txt
+    prefix: gcal.
+    solint: inf
+    gaintype: G
+    calmode: p
+    minsnr: 2.5
