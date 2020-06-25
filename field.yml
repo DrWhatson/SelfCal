@@ -1,36 +1,54 @@
 Source:
-    RA: 10h19m51.46s
+    RA: 10h19m50.95s
     Dec: +67d50m37.4s
 
 Field:
     Centre: 10h20m02.69s 67d52m21s
 
-invis: concat_1020+6752.ms
-outvis: SelfCald.ms
+invis: test_avg_1020+6752.ms
+
 tmpvis: Shift.ms
 
-WSCLEAN:
-    version: wsclean-2.8
-    j: 2
-    field: 0
+wsclean0:
+    version: wsclean
+    j:
+    field:
     data-column: DATA
     scale: 0.05arcsec
-    size: 512 512
+    size: 1000 1000
     gain: 0.2
-    mgain: 0.05
-    weight: natural
+    mgain: 0.8
+    weight: briggs 0.5
     niter: 1000
-    auto-threshold: 1.0
+    auto-threshold: 3
+    auto-mask: 5
     fits-mask:
     clean-border: 5
-    name: test
+    name: test0a
 
+wsclean1:
+    data-column: CORRECTED_DATA
+    name: test1a
 
-gaincal:
+gaincal0:
     cal_dir: calibration
     callib: callib.txt
-    prefix: gcal.
+    table: gcal.0
     solint: inf
     gaintype: G
     calmode: p
     minsnr: 2.5
+    script: gcal0.py
+
+Pipeline:
+    cycles: 1
+    copy: False
+    chgcentre_src: False
+    wsclean0: False
+    gain0: False
+    wsclean1: False
+    chgcentre_field: False
+
+Split:
+    outvis: SelfCald.ms
+    script: split.py
