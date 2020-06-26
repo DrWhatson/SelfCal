@@ -1,6 +1,6 @@
 Source:
-    RA: 10h19m50.95s
-    Dec: +67d50m37.4s
+    RA: 10h19m26.00s
+    Dec: +67d52m22.0s
 
 Field:
     Centre: 10h20m02.69s 67d52m21s
@@ -26,7 +26,7 @@ wsclean0:
     clean-border: 5
     name: test0a
 
-wsclean1:
+wsclean_last:
     data-column: CORRECTED_DATA
     name: test1a
 
@@ -42,12 +42,13 @@ gaincal0:
 
 Pipeline:
     cycles: 1
-    copy: False
-    chgcentre_src: False
-    wsclean0: False
-    gain0: False
-    wsclean1: False
-    chgcentre_field: False
+    start: 0
+    copy: True
+    make_cal_dir: True
+    chgcentre_src: True
+    wsclean_last: True
+    chgcentre_field: True
+    split: True
 
 Split:
     outvis: SelfCald.ms
