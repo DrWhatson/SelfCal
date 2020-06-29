@@ -113,6 +113,8 @@ def update_defaults(parms,defaults):
     for key in parms.keys():
         defaults[key] = parms[key]
 
+    return defaults
+
 
 def get_gaincal_option(key,parms,defaults):
 
@@ -231,7 +233,7 @@ def run_wsclean(parms,icycle):
         exit("KeyError: missing wsclean entry in params file")
 
     if icycle>0 or icycle==-1:
-        update_defaults(ws_parms, ws_parms_old)
+        ws_parms = update_defaults(ws_parms, ws_parms_old)
 
     print(icycle,ncycles)
     if icycle>=start and icycle<=ncycles or icycle==-1:
@@ -280,6 +282,8 @@ def make_cal_dir(parms):
 
 def run_gaincal(parms,icycle):
 
+    global cal_parms_old
+
     key = 'gaincal{:d}'.format(icycle)
     print(key,icycle)
     if key in parms.keys():  # Check in parms file
@@ -295,7 +299,7 @@ def run_gaincal(parms,icycle):
     print(start,ncycles)
     if icycle>=start and icycle<=ncycles:
         if icycle>0:
-            update_defaults(cal_parms, cal_parms_old)
+            cal_parms = update_defaults(cal_parms, cal_parms_old)
 
         callib = get_gaincal_option('callib',cal_parms,cal_parms_default)
         callib = "./{:s}/{:s}".format(cal_dir,callib)

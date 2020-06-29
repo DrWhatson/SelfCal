@@ -26,9 +26,16 @@ wsclean0:
     clean-border: 5
     name: test0a
 
-wsclean_last:
+wsclean1:
     data-column: CORRECTED_DATA
     name: test1a
+
+wsclean2:
+    name: test2a
+
+
+wsclean_last:
+    name: test3a
 
 gaincal0:
     cal_dir: calibration
@@ -40,8 +47,18 @@ gaincal0:
     minsnr: 2.5
     script: gcal0.py
 
+gaincal1:
+    table: gcal.1
+    solint: 120s
+    script: gcal1.py
+
+gaincal2:
+    table: gcal.2
+    solint: 60s
+    script: gcal2.py
+
 Pipeline:
-    cycles: 1
+    cycles: 3
     start: 0
     copy: True
     make_cal_dir: True
