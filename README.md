@@ -70,6 +70,80 @@ tmpvis: Shift.ms
 
 Name of input measurement set and tmp file to copy. Dataset is copied to be sure the original doesn't get corrupted
 
+```yaml
 
 
+wsclean0:
+    version: wsclean
+    j:
+    field:
+    data-column: DATA
+    scale: 0.05arcsec
+    size: 1000 1000
+    gain: 0.2
+    mgain: 0.8
+    weight: briggs 0.5
+    niter: 1000
+    auto-threshold: 3
+    auto-mask: 5
+    fits-mask:
+    clean-border: 5
+    name: test0a
 
+wsclean1:
+    data-column: CORRECTED_DATA
+    name: test1a
+
+wsclean2:
+    name: test2a
+
+wsclean_last:
+    name: test3a
+```
+You can select which version od wsclean to run (wsclean-2.8 etc) assuming it is on your system PATH. You can use give the the full path name if it is not in PATH
+The name of the parameter is the same as the wsclean option. You can force a parameter not to appear in the wsclean command by leaving the parameter value blank, if you want to override and eliminate a default parameter Also parameters are all reused in the next iteratation usless they are redined
+
+```yaml
+gaincal0:
+    cal_dir: calibration
+    callib: callib.txt
+    table: gcal.0
+    solint: inf
+    gaintype: G
+    calmode: p
+    minsnr: 2.5
+    script: gcal0.py
+
+gaincal1:
+    table: gcal.1
+    solint: 120s
+    script: gcal1.py
+
+gaincal2:
+    table: gcal.2
+    solint: 60s
+    script: gcal2.py
+```
+Similary with the cal cycle which is run as a call to CASA using a python script with the name given by the "script" parameter. The callib system is used with the cal table held in the "cal_dir" directory. Again parameters are reused between iterations
+
+```yaml
+Split:
+    outvis: SelfCald.ms
+    script: split.py
+```
+The split section just defines the name for output dataset and the python script name to implement it. Averaging can also be done at this point
+
+```yaml
+Pipeline:
+    cycles: 3
+    start: 0
+    copy: True
+    make_cal_dir: True
+    chgcentre_src: True
+    wsclean_last: True
+    chgcentre_field: True
+    split: True
+```
+Rather like the eMERLIN pipeline, which bits of the script are run can be defined here. 
+Cycles sets the number of map and calibration cycles to go through.
+Start sets the first map & cal cycle if the script need to restart from a intermediate state (ie something crashed)
