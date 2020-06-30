@@ -51,5 +51,25 @@ Section:
     parm4: briggs 0.5
 ```
 
-## Source
+## Parameters
+```yaml
+Source:
+    RA: 10h19m26.00s
+    Dec: +67d52m22.0s
+    
+Field:
+    Centre: 10h20m02.69s 67d52m21s
+```
+RA and Dec of source position in sexadecimal format (strictly speaking it's the centre position for map, if you  need to capture the flux from several sources
+Also the position phase centre of the field also in sexadecimal but on one line
+
+```yaml
+invis: test_avg_1020+6752.ms
+tmpvis: Shift.ms
+```
+
+Name of input measurement set and tmp file to copy. Dataset is copied to be sure the original doesn't get corrupted
+
+
+
 
