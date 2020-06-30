@@ -16,7 +16,7 @@ Mapping and phase-shifting are done with wsclean and chgcentre of A.Offringa, ca
 1. set input and temporary dataset names
 1. Set paramaters for wsclean
 1. set parameters for gaincal
-1. run with python3 SelfCal_bob.py field.yml
+1. run with python3 SelfCal_shift.py field.yml
 
 # Parameters File
 The parameter file is expected to be in YAML (YAML Ain't Markup Language) format (https://yaml.org/spec/1.2/spec.html)
