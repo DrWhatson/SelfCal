@@ -1,6 +1,6 @@
 # Description
 This is a Python 3 script written mainly to compliment the eMERLIN pipeline https://github.com/e-merlin/eMERLIN_CASA_pipeline
-to self calibrate a CASA dataset. It is based on an alorithm of Javier Moldon, but extended to allow offset mapping of a suitable source, This is useful for wide-field survey data where there probably isn't a bright enough source in the middle of the field. The script should be general enough for any CASA based data with the appropiate change of parameters. Due to blurring of averaged dataset when phase rotating, this should only really be used for unaveraged or very lightly averaged datasets. For averaged datasets the chgcentre part can be flagged in the parameters file, but a bigger map will probably be needed. 
+to self calibrate a CASA dataset. It is based on an alorithm of Javier Moldon, but extended to allow offset mapping of a suitable source, This is useful for wide-field survey data where there probably isn't a bright enough source in the middle of the field. The script should be general enough for any CASA based data with the appropiate change of parameters. Due to the blurring of sources in averaged dataset when phase rotating, this should only really be used for unaveraged or very lightly averaged datasets. For averaged datasets the chgcentre part can be flagged out in the parameters file, but a bigger map will probably be needed. 
 
 Mapping and phase-shifting are done with wsclean and chgcentre of A.Offringa, calibration via gaincal in CASA and parameters read from a yml file using pyyaml.
 
