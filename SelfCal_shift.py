@@ -19,7 +19,12 @@ wsclean_defaults = {'j':None,
                     'local-rms':False,
                     'fits-mask':None,
                     'clean-border':5,
-                    'name':'test'}
+                    'name':'test',
+                    'fit-spectral-pol':None,
+                    'join-channels':None,
+                    'channels-out':None,
+                    'deconvolution-channels':None,
+                    'save-source-list':None}
 
 cal_parms_default = {'cal_dir':'calibration',
                      'callib':'callib.txt',
