@@ -24,6 +24,11 @@ wsclean0:
     auto-mask: 5
     fits-mask:
     clean-border: 5
+    fit-spectral-pol: 2
+    join-channels: True
+    channels-out: 16
+    deconvolution-channels: 1
+    save-source-list: True
     name: test0a
 
 wsclean1:
